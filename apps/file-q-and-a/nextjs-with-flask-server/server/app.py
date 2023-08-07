@@ -18,7 +18,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("debug.log"),
+        logging.FileHandler("./debug.log"),
         logging.StreamHandler(sys.stdout)
     ]
 )
@@ -27,7 +27,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("debug.log"),
+        logging.FileHandler("./debug.log"),
         logging.StreamHandler(sys.stdout)
     ]
 )
@@ -84,7 +84,7 @@ def answer_question():
     try:
         params = request.get_json()
         question = params["question"]
-
+        
         answer_question_response = get_answer_from_files(
             question, app.session_id, app.pinecone_index)
         return answer_question_response

@@ -1,15 +1,16 @@
 # ----- PINECONE CONFIG -----
-PINECONE_API_KEY: "<your Pinecone API key>"
-PINECONE_INDEX: "<your Pinecone Index name>" # dimensions: 1536, metric: cosine similarity
-PINECONE_ENV: "<your Pinecone env e.g.us-west1-gcp>"
+PINECONE_API_KEY: "96df6840-4db3-41ac-a173-c25da1dbae94"
+PINECONE_INDEX: "open-ai-cookbook" # dimensions: 1536, metric: cosine similarity
+PINECONE_ENV: "northamerica-northeast1-gcp"
 
 # ----- SERVER PORT ----
 SERVER_PORT: "8080"
 
 # ---- OPENAI CONFIG -----
 EMBEDDINGS_MODEL: "text-embedding-ada-002"
-GENERATIVE_MODEL: "gpt-3.5-turbo" # use gpt-4 for better results
+GENERATIVE_MODEL: "gpt-3.5-turbo-16k" # use gpt-4 for better results old: gpt-3.5-turbo
 EMBEDDING_DIMENSIONS: 1536
+OPENAI_API_KEY: "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"
 TEXT_EMBEDDING_CHUNK_SIZE: 200
 # This is the minimum cosine similarity score that a file must have with the search query to be considered relevant
 # This is an arbitrary value, and you should vary/ remove this depending on the diversity of your dataset

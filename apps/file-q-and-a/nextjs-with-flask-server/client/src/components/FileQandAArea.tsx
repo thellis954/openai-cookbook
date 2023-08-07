@@ -19,6 +19,7 @@ function FileQandAArea(props: FileQandAAreaProps) {
   const [searchResultsLoading, setSearchResultsLoading] =
     useState<boolean>(false);
   const [answer, setAnswer] = useState("");
+  const [messagesStr, setMessagesStr] = useState("");
 
   const handleSearch = useCallback(async () => {
     if (searchResultsLoading) {
@@ -27,6 +28,7 @@ function FileQandAArea(props: FileQandAAreaProps) {
 
     const question = (searchBarRef?.current as any)?.value ?? "";
     setAnswer("");
+    setMessagesStr("");
 
     if (!question) {
       setAnswerError("Please ask a question.");
@@ -52,6 +54,7 @@ function FileQandAArea(props: FileQandAAreaProps) {
 
       if (answerResponse.status === 200) {
         setAnswer(answerResponse.data.answer);
+        setMessagesStr(answerResponse.data.messagesStr.replace(/\n/, "<br>"));
       } else {
         setAnswerError("Sorry, something went wrong!");
       }
@@ -116,6 +119,8 @@ function FileQandAArea(props: FileQandAAreaProps) {
             </div>
           )}
 
+          
+
           <Transition
             show={
               props.files.filter((file) =>
@@ -137,7 +142,17 @@ function FileQandAArea(props: FileQandAAreaProps) {
               title="Sources"
               listExpanded={true}
             />
+            
           </Transition>
+
+          {/* messagesStr for debugging */}
+          {messagesStr && (
+              <div className="flex w-full flex-col">
+                 <code>
+                    {messagesStr}
+                 </code>
+              </div>
+            )}
         </Transition>
       </div>
     </div>
